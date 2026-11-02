@@ -10,8 +10,9 @@ export default function SmoothGlideController({ isEnvelopeOpen }) {
     // Automatically start smooth glide 1.2 seconds after opening envelope
     const timer = setTimeout(() => {
       isGlidingRef.current = true;
+      let lastTimestamp = performance.now();
 
-      const glide = () => {
+      const glide = (timestamp) => {
         if (!isGlidingRef.current) return;
 
         const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -20,8 +21,12 @@ export default function SmoothGlideController({ isEnvelopeOpen }) {
           return;
         }
 
-        // Smooth gentle scroll downwards (~55px/second)
-        window.scrollBy(0, 0.9);
+        const now = timestamp || performance.now();
+        const delta = Math.min((now - lastTimestamp) / 1000, 0.1);
+        lastTimestamp = now;
+
+        // Smooth scroll downwards (~105px/second - a little bit faster, comfortable reading pace)
+        window.scrollBy(0, 105 * delta);
         animationFrameRef.current = requestAnimationFrame(glide);
       };
 
