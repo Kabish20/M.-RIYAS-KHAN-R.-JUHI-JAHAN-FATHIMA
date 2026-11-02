@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold-primary: #d4af37;
+  --gold-light: #f9e7a2;
+  --gold-dark: #99751d;
+  --emerald-deep: #032316;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #031c12;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #cfa235, #75521e);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e5bd57;
+}
+
+/* Islamic Geometric Pattern Background */
+.islamic-pattern {
+  background-color: #031d13;
+  background-image: radial-gradient(#d4af37 0.75px, transparent 0.75px), radial-gradient(#115e3c 0.75px, #031d13 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+.islamic-arabesque-bg {
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 100% 50%, rgba(16, 94, 60, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 0% 50%, rgba(16, 94, 60, 0.2) 0%, transparent 50%);
+}
+
+/* Luxurious Gold Text Shimmer */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #fff3c4 0%, #dfbc60 25%, #f9e7a2 50%, #cfa235 75%, #ebd188 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.gold-border {
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15), inset 0 0 15px rgba(212, 175, 55, 0.05);
+}
+
+.gold-card {
+  background: linear-gradient(135deg, rgba(8, 55, 36, 0.75) 0%, rgba(3, 35, 22, 0.85) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.gold-card-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gold-card-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 55, 0.25);
+}
+
+/* Lantern Glow Keyframes */
+@keyframes lanternGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 24px rgba(212, 175, 55, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 225, 80, 0.85)) drop-shadow(0 0 40px rgba(212, 175, 55, 0.6));
+  }
+}
+
+.lantern-glow {
+  animation: lanternGlow 3.5s ease-in-out infinite;
+}
+
+/* Hanging chain effect */
+.chain-link {
+  background: repeating-linear-gradient(
+    to bottom,
+    #d4af37,
+    #d4af37 4px,
+    #75521e 4px,
+    #75521e 8px
+  );
+}
+
+/* Royal Envelope Perspective */
+.perspective-1000 {
+  perspective: 1200px;
+}
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Custom Islamic Arch shape */
+.islamic-arch {
+  border-radius: 50% 50% 0 0 / 25% 25% 0 0;
+}
+
