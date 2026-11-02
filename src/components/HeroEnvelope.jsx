@@ -10,7 +10,8 @@ export default function HeroEnvelope({ isOpen, onOpen, guestName }) {
   const handleOpenInvitation = () => {
     setIsOpening(true);
     soundEngine.playBlessingChime();
-    soundEngine.startBackgroundMusic();
+    soundEngine.startBackgroundMusic(true);
+    window.scrollTo({ top: 0, behavior: 'instant' });
 
     confetti({
       particleCount: 90,

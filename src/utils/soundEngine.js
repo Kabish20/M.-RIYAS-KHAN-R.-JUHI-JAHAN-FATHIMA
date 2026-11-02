@@ -48,9 +48,17 @@ class SoundEngine {
     this.listeners.forEach((fn) => fn(this.isPlaying));
   }
 
-  startBackgroundMusic() {
+  startBackgroundMusic(fromStart = false) {
     if (!this.audio) this.initAudio();
     if (!this.audio) return;
+
+    if (fromStart) {
+      try {
+        this.audio.currentTime = 0;
+      } catch (e) {
+        // ignore
+      }
+    }
 
     this.audio.volume = this.isMuted ? 0 : this.volume;
     const playPromise = this.audio.play();
@@ -65,6 +73,9 @@ class SoundEngine {
           // If browser requires user interaction first, listen on next click
           const handleFirstClick = () => {
             if (this.audio) {
+              if (fromStart) {
+                try { this.audio.currentTime = 0; } catch (e) {}
+              }
               this.audio.play().then(() => {
                 this.isPlaying = true;
                 this.notifyListeners();
@@ -75,6 +86,17 @@ class SoundEngine {
           window.addEventListener('click', handleFirstClick, { once: true });
         });
     }
+  }
+
+  getCurrentTime() {
+    return this.audio ? this.audio.currentTime : 0;
+  }
+
+  getDuration() {
+    if (this.audio && !isNaN(this.audio.duration) && this.audio.duration > 0) {
+      return this.audio.duration;
+    }
+    return 31.14; // Exact duration of public/music.mp3
   }
 
   stopBackgroundMusic() {
